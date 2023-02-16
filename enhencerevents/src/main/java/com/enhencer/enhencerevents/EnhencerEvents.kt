@@ -182,14 +182,19 @@ class EnhencerEvents private constructor(private val applicationContext: Context
         val price: Double,
     )
 
-    fun purchase() {
-        visitorId = getVId()
-        val basketId = System.currentTimeMillis()
+    fun getDefaultProducts(): JSONArray {
         val product = JSONObject()
         product.put("id", "no-id")
         product.put("quantity", 1)
         product.put("price", 1)
         val products = JSONArray(listOf(mapOf("id" to "no-id", "quantity" to 1, "price" to 1)))
+
+        return products
+    }
+
+    fun purchase(products: JSONArray = getDefaultProducts()) {
+        visitorId = getVId()
+        val basketId = System.currentTimeMillis()
         val userId = token
         val jsonObj = JSONObject()
         jsonObj.put("type", type)
