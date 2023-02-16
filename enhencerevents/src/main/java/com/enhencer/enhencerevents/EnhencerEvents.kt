@@ -102,9 +102,10 @@ class EnhencerEvents private constructor(private val applicationContext: Context
         }
     }
 
-    fun listingPage(listingCategory1: String, listingCategory2: String) {
+    fun listingPage(listingCategory1: String) {
         visitorId = getVId()
         val userId = token
+        val listingCategory2 = ""
         val source = ""
 
         val jsonObj = JSONObject()
